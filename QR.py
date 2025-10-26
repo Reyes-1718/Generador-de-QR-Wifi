@@ -375,11 +375,24 @@ def interfaz_grafica():
             entrada_password.config(show="*")
             boton_mostrar_password.config(text="Mostrar Contraseña")
 
+    def actualizar_campos():
+        """Actualiza la visibilidad de los campos de contraseña según el tipo de seguridad."""
+        if opcion_seguridad.get() == "nopass":
+            label_password.pack_forget()
+            entrada_password.pack_forget()
+            boton_mostrar_password.pack_forget()
+            entrada_password.delete(0, tk.END)  # Limpiar el campo
+        else:
+            label_password.pack(pady=5)
+            entrada_password.pack(pady=5)
+            boton_mostrar_password.pack(pady=5)
+
     def limpiar_campos():
         entrada_ssid.delete(0, tk.END)
         entrada_password.delete(0, tk.END)
         var_oculta.set(False)
         opcion_seguridad.set("WPA")
+        actualizar_campos()  # Actualizar visibilidad después de limpiar
 
     ventana = tk.Tk()
     ventana.title("Generador de Código QR para Wi-Fi")
@@ -390,16 +403,16 @@ def interfaz_grafica():
 
     tk.Label(ventana, text="Tipo de seguridad:").pack(pady=5)
     opcion_seguridad = tk.StringVar(value="WPA")
-    tk.Radiobutton(ventana, text="WPA/WPA2", variable=opcion_seguridad, value="WPA").pack()
-    tk.Radiobutton(ventana, text="WEP", variable=opcion_seguridad, value="WEP").pack()
-    tk.Radiobutton(ventana, text="Ninguna (red abierta)", variable=opcion_seguridad, value="nopass").pack()
+    tk.Radiobutton(ventana, text="WPA/WPA2", variable=opcion_seguridad, value="WPA", command=actualizar_campos).pack()
+    tk.Radiobutton(ventana, text="WEP", variable=opcion_seguridad, value="WEP", command=actualizar_campos).pack()
+    tk.Radiobutton(ventana, text="Ninguna (red abierta)", variable=opcion_seguridad, value="nopass", command=actualizar_campos).pack()
 
-    tk.Label(ventana, text="Contraseña:").pack(pady=5)
+    label_password = tk.Label(ventana, text="Contraseña:")
     entrada_password = tk.Entry(ventana, width=30, show="*")
-    entrada_password.pack(pady=5)
-
     boton_mostrar_password = tk.Button(ventana, text="Mostrar Contraseña", command=mostrar_contraseña)
-    boton_mostrar_password.pack(pady=5)
+
+    # Mostrar inicialmente los campos de contraseña (para WPA por defecto)
+    actualizar_campos()
 
     var_oculta = tk.BooleanVar()
     tk.Checkbutton(ventana, text="¿La red está oculta?", variable=var_oculta).pack(pady=5)
