@@ -1,0 +1,9 @@
+Es necesario tener estas dependencias para poder iniciar el programa en .py, de tener el programa en ejecutable .exe no es necesario tenerla instaladas.
+además de tener pip instalado y configurado.
+
+Comandos:
+pip install qrcode
+pip install "qrcode[pil]"
+Observación la versión tiene que ser igual o superior a la esta: qrcode[pil]>=7.0.0
+
+
