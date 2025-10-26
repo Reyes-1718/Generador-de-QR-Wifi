@@ -8,7 +8,7 @@ Abre PowerShell o Símbolo del Sistema (cmd) y ejecuta los siguientes comandos:
 
 ```powershell
 # Navegar a la carpeta del proyecto
-cd "c:\Users\luis2\Mis_Apps"
+cd "c:\Users\tu usuario\Generador de QR Wifi"
 
 # Ejecutar el script de generación de ejecutable
 python build_exe.py

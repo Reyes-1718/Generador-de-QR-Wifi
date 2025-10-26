@@ -61,7 +61,7 @@ git clone [URL-DEL-REPOSITORIO]
 2. **Navegar al directorio del proyecto:**
 
 ```bash
-cd Mis_Apps  # O el nombre que hayas dado a la carpeta
+cd Generador de QR Wifi  # O el nombre que hayas dado a la carpeta
 ```
 
 3. **Instalar las dependencias:**
