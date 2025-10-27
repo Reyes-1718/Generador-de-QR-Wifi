@@ -150,6 +150,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+release assets/
 develop-eggs/
 dist/
 downloads/
