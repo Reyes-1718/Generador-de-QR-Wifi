@@ -396,6 +396,11 @@ def interfaz_grafica():
 
     ventana = tk.Tk()
     ventana.title("Generador de Código QR para Wi-Fi")
+    # Agregar ícono si existe
+    try:
+        ventana.iconbitmap('icons/icono.ico')
+    except:
+        pass  # Si no existe el ícono, continuar sin él
 
     tk.Label(ventana, text="Nombre de la red (SSID):").pack(pady=5)
     entrada_ssid = tk.Entry(ventana, width=30)

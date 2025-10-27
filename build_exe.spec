@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['QR.py'],
+    ['build_exe.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='GeneradorQR-WiFi',
+    name='build_exe',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -35,5 +35,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['icons\\icono.ico'],
 )

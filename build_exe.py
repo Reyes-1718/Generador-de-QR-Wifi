@@ -32,6 +32,7 @@ def crear_ejecutable():
         "pyinstaller",
         "--onefile",                    # Un solo archivo ejecutable
         "--noconsole",                  # Sin mostrar ventana de consola
+        "--icon", "icons/icono.ico",          # Ícono del ejecutable
         "--name", nombre_ejecutable,    # Nombre del ejecutable
         "--clean",                      # Limpiar archivos temporales
         "--noconfirm",                  # No pedir confirmación
@@ -48,7 +49,7 @@ def crear_ejecutable():
         print("\n✅ ¡Ejecutable creado exitosamente!")
         print(f"📁 Ubicación: dist/{nombre_ejecutable}.exe")
         print("\n📋 Archivos generados:")
-        print(f"   - dist/{nombre_ejecutable}.exe  (ejecutable final)")
+        print(f"   - dist/{nombre_ejecutable}.exe  (ejecutable final con ícono)")
         print(f"   - build/  (archivos temporales)")
         print(f"   - {nombre_ejecutable}.spec  (archivo de configuración)")
         
