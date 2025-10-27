@@ -20,8 +20,8 @@ Alternativamente, si el script no funciona, puedes usar directamente PyInstaller
 # Instalar PyInstaller (si no está instalado)
 python -m pip install pyinstaller
 
-# Generar el ejecutable sin mostrar la ventana de consola
-python -m PyInstaller --onefile --noconsole --name GeneradorQR-WiFi --clean --noconfirm QR.py
+# Generar el ejecutable sin mostrar la ventana de consola e incluir ícono
+python -m PyInstaller --onefile --noconsole --icon=icons/icono.ico --name GeneradorQR-WiFi --clean --noconfirm QR.py
 ```
 
 ## 2. Verificar el Ejecutable
@@ -36,8 +36,10 @@ El ejecutable generado debería estar en la carpeta `dist`. Para verificar que f
 ## 3. Notas Importantes
 
 - El ejecutable generado no requiere tener Python instalado para funcionar
+- Incluye ícono personalizado para mejor presentación
 - Contiene todas las mejoras implementadas:
   - División inteligente de texto respetando palabras completas
   - Posicionamiento mejorado del texto para mejor visibilidad
   - Interfaz gráfica con opciones para mostrar/ocultar contraseña
+  - Ocultamiento automático de campos para redes abiertas
   - Mayor espacio para el texto del SSID

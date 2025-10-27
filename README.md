@@ -71,6 +71,7 @@ Generador de QR Wifi/
 ├── dist/                      # Ejecutables generados (ignorados)
 ├── pruebas_qr/                # Imágenes de prueba generadas (ignoradas)
 ├── __pycache__/               # Archivos de caché Python (ignorados)
+├── release assets/            # Archivos temporales para releases (ignorados)
 └── .git/                      # Control de versiones
 ```
 
@@ -82,6 +83,7 @@ Generador de QR Wifi/
 - `dist/`: Contiene los ejecutables finales generados (no versionado)
 - `pruebas_qr/`: Almacena códigos QR generados durante las pruebas (no versionado)
 - `__pycache__/`: Archivos de bytecode Python generados automáticamente (no versionado)
+- `release assets/`: Carpeta temporal para preparar archivos de releases (no versionada)
 
 ## Descripción de Scripts Principales
 

@@ -83,12 +83,13 @@ python3 -m pip install pyinstaller
 ### Creación del ejecutable
 
 ```bash
-python3 -m PyInstaller --onefile --noconsole --name GeneradorQR-WiFi QR.py
+python3 -m PyInstaller --onefile --noconsole --icon=icons/icono.ico --name GeneradorQR-WiFi QR.py
 ```
 
 Opciones explicadas:
 - `--onefile`: Genera un único archivo ejecutable
 - `--noconsole`: No muestra la ventana de terminal, solo la interfaz gráfica
+- `--icon=icons/icono.ico`: Incluye ícono (principalmente para Windows)
 - `--name GeneradorQR-WiFi`: Nombre del archivo ejecutable resultante
 
 ### Ubicación del ejecutable
