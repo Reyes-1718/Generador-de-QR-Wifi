@@ -239,8 +239,12 @@ Thumbs.db
 ### Instalación en Windows
 
 #### Opción 1: Ejecutable Pre-compilado (Recomendado)
-1. Descarga `GeneradorQR-WiFi.exe` desde la carpeta `dist/`
-2. Haz doble clic para ejecutar (no requiere instalación adicional)
+1. Ve a la sección **"Releases"** del repositorio en GitHub:  
+   [`https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases`](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases)
+2. Descarga la versión más reciente de `GeneradorQR-WiFi.exe`
+3. Haz doble clic para ejecutar (no requiere instalación adicional)
+
+**Nota**: Los ejecutables están disponibles para Windows. Para otras plataformas, compila desde código fuente.
 
 #### Opción 2: Desde Código Fuente
 ```powershell
@@ -428,6 +432,17 @@ Durante la ejecución de pruebas, se generan códigos QR de ejemplo en `pruebas_
 - Modo batch para múltiples redes
 - API REST para integración web
 - Temas oscuros/claros para la interfaz
+
+### Descargas y Releases
+Los ejecutables pre-compilados están disponibles en la sección **Releases** de GitHub:
+- [`https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases`](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases)
+
+**Contenido de cada release:**
+- `GeneradorQR-WiFi.exe`: Ejecutable para Windows
+- `README.md`: Documentación completa
+- `requirements.txt`: Dependencias para desarrollo
+- `LINUX.md`: Guía específica para Linux
+- `instrucciones_actualizacion.md`: Guía de compilación
 
 ### Contribución
 Para contribuir:
