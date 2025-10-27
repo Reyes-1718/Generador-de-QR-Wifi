@@ -61,24 +61,27 @@ Generador de QR Wifi/
 ├── build_exe.py               # Script para generar ejecutables
 ├── test_qr.py                 # Suite de pruebas unitarias
 ├── requirements.txt           # Lista de dependencias Python
+├── .gitignore                 # Configuración de archivos ignorados por Git
 ├── README.md                  # Esta documentación
 ├── LINUX.md                   # Guía específica para Linux
 ├── instrucciones_actualizacion.md  # Instrucciones para actualizar ejecutables
 ├── QR.spec                    # Archivo de configuración PyInstaller (Windows)
 ├── GeneradorQR-WiFi.spec      # Archivo de configuración PyInstaller (actual)
-├── build/                     # Archivos temporales de compilación
-├── dist/                      # Ejecutables generados
-├── pruebas_qr/                # Imágenes de prueba generadas
-├── __pycache__/               # Archivos de caché Python
-└── .git/                      # Control de versiones (si aplica)
+├── build/                     # Archivos temporales de compilación (ignorados)
+├── dist/                      # Ejecutables generados (ignorados)
+├── pruebas_qr/                # Imágenes de prueba generadas (ignoradas)
+├── __pycache__/               # Archivos de caché Python (ignorados)
+└── .git/                      # Control de versiones
 ```
 
 ### Descripción de Archivos Clave
 - `icons/icono.ico`: Recurso visual para el ícono de la aplicación y ejecutables
+- `.gitignore`: Define qué archivos/carpetas no deben versionarse en Git
 - `*.spec`: Archivos de configuración para PyInstaller, definen parámetros de compilación
-- `build/`: Directorio temporal usado durante la compilación
-- `dist/`: Contiene los ejecutables finales generados
-- `pruebas_qr/`: Almacena códigos QR generados durante las pruebas
+- `build/`: Directorio temporal usado durante la compilación (no versionado)
+- `dist/`: Contiene los ejecutables finales generados (no versionado)
+- `pruebas_qr/`: Almacena códigos QR generados durante las pruebas (no versionado)
+- `__pycache__/`: Archivos de bytecode Python generados automáticamente (no versionado)
 
 ## Descripción de Scripts Principales
 
@@ -124,6 +127,112 @@ python build_exe.py
 ```bash
 python test_qr.py
 ```
+
+## Configuración de Git (.gitignore)
+
+### Propósito del .gitignore
+El archivo `.gitignore` es crucial en proyectos de desarrollo para especificar qué archivos y carpetas deben ser **ignorados** por el sistema de control de versiones Git. Esto mantiene el repositorio limpio, enfocado en el código fuente y evita versionar archivos temporales, compilados o generados automáticamente.
+
+### Configuración Actual
+El proyecto incluye un `.gitignore` completo optimizado para Python y PyInstaller:
+
+```gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Archivos generados por el proyecto
+pruebas_qr/
+qr_wifi_*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+```
+
+### Explicación de las Reglas Principales
+
+#### 🐍 **Archivos Python**
+- `__pycache__/`: Carpetas de bytecode generadas por Python
+- `*.py[cod]`: Archivos compilados (.pyc, .pyo)
+
+#### 📦 **Distribución y Compilación**
+- `build/`: Archivos temporales de PyInstaller
+- `dist/`: **Ejecutables finales** (evita versionar binarios grandes)
+- `*.spec`: Configuraciones de PyInstaller
+
+#### 🧪 **Pruebas y Desarrollo**
+- `pruebas_qr/`: **Imágenes de QR generadas en pruebas**
+- `qr_wifi_*.png`: **Códigos QR individuales**
+- Archivos de cobertura y caché de pruebas
+
+#### 🌍 **Entornos Virtuales**
+- `.env`, `.venv`, `venv/`: Variables de entorno y entornos virtuales
+
+#### 🖥️ **IDE y Sistema Operativo**
+- `.vscode/`, `.idea/`: Configuraciones de editores
+- `.DS_Store`, `Thumbs.db`: Archivos del sistema
+
+### Beneficios de Esta Configuración
+- **Repositorio limpio**: Solo código fuente versionado
+- **Colaboración eficiente**: Evita conflictos con archivos generados
+- **Seguridad**: No expone variables de entorno o datos sensibles
+- **Rendimiento**: Reduce tamaño del repositorio y velocidad de clonado
 
 ## Instrucciones de Instalación y Ejecución
 
@@ -207,6 +316,8 @@ Los archivos `.spec` contienen la configuración de PyInstaller:
 - `QR.spec`: Configuración básica
 - `GeneradorQR-WiFi.spec`: Configuración actualizada con ícono
 
+**Nota**: Los archivos `.spec` son ignorados por `.gitignore` ya que se generan automáticamente, pero se incluyen versiones específicas para referencia.
+
 **Contenido típico de un .spec**:
 ```python
 a = Analysis(
@@ -287,6 +398,8 @@ Durante la ejecución de pruebas, se generan códigos QR de ejemplo en `pruebas_
 - `qr_wifi_RedCorta.png`
 - `qr_wifi_RedMuyMuyLargaConMuchosCaracteres.png`
 - Archivos con caracteres especiales y espacios
+
+**Nota**: Esta carpeta está configurada para ser ignorada por Git (`.gitignore`) ya que contiene archivos generados dinámicamente durante las pruebas.
 
 ### Casos de Prueba Incluidos
 - SSID cortos y largos
