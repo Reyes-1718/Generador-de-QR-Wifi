@@ -15,454 +15,143 @@ El **Generador de QR WiFi** es una aplicación de escritorio desarrollada en Pyt
 ### Caso de Uso
 Ideal para administradores de red, cafeterías, hoteles, oficinas y usuarios domésticos que desean compartir credenciales de Wi-Fi de manera segura y conveniente. Los códigos QR generados son compatibles con la mayoría de los smartphones modernos.
 
+## 🚀 Inicio Rápido
+
+### Opción 1: Ejecutable Pre-compilado (Recomendado)
+1. Ve a [**Releases**](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases) en GitHub
+2. Descarga `GeneradorQR-WiFi.exe` para Windows
+3. Ejecuta directamente (sin instalación)
+
+### Opción 2: Desde Código Fuente
+```bash
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Ejecutar
+python QR.py
+```
+
+## 📚 Documentación
+
+Esta documentación sigue el marco **Diátaxis** para una experiencia de usuario óptima:
+
+### 🛠️ **How-to Guides** (Guías Prácticas)
+- [**Construcción y Despliegue**](docs/how-to/building-and-deployment.md) - Instalación, compilación y distribución paso a paso
+
+### 📖 **Referencia Técnica**
+- [**API Reference**](docs/reference/api-reference.md) - Documentación completa de funciones y módulos
+- [**Proceso de Compilación**](docs/reference/build-process.md) - Detalles técnicos de PyInstaller y empaquetado
+
+### 💡 **Explicación** (Understanding)
+- [**Arquitectura del Sistema**](docs/explanation/architecture.md) - Diseño, decisiones técnicas y principios
+- [**Formato QR WiFi**](docs/explanation/wifi-qr-format.md) - Estándar, algoritmos y decisiones de diseño
+
 ## Requisitos del Sistema
 
 ### Software Necesario
-- **Python 3.7 o superior** (para ejecución desde código fuente)
-- **Sistema Operativo**: Windows 10/11, macOS 10.15+, Linux (Ubuntu, Fedora, Arch, etc.)
-- **Pip** (gestor de paquetes de Python)
+- **Python 3.7+** (para código fuente)
+- **Sistema Operativo**: Windows 10/11, macOS 10.15+, Linux
+- **Pip** (gestor de paquetes Python)
 
-### Dependencias de Python
-Las dependencias principales se especifican en `requirements.txt`:
+### Dependencias
 ```
 qrcode[pil]>=7.0.0
 ```
 
-Esto incluye automáticamente:
-- `qrcode`: Para la generación de códigos QR
-- `Pillow (PIL)`: Para manipulación de imágenes y texto
-
-### Verificación de Tkinter
-Para la interfaz gráfica, se requiere Tkinter (incluido por defecto en Python para Windows y macOS):
+### Verificación
 ```bash
-# Verificar Tkinter
-python -c "import tkinter; print('Tkinter disponible')"
+# Verificar instalación
+python -c "import qrcode; from PIL import Image; print('✅ Listo')"
 ```
 
-En Linux, instalar si es necesario:
-```bash
-# Ubuntu/Debian
-sudo apt-get install python3-tk
-
-# Fedora
-sudo dnf install python3-tkinter
-
-# Arch Linux
-sudo pacman -S tk
-```
-
-## Estructura de Archivos y Carpetas
+## 📁 Estructura del Proyecto
 
 ```
 Generador de QR Wifi/
-├── icons/
-│   └── icono.ico              # Ícono de la aplicación (32x32 píxeles)
-├── QR.py                      # Script principal con interfaz gráfica
-├── build_exe.py               # Script para generar ejecutables
-├── test_qr.py                 # Suite de pruebas unitarias
-├── requirements.txt           # Lista de dependencias Python
-├── .gitignore                 # Configuración de archivos ignorados por Git
-├── README.md                  # Esta documentación
-├── LINUX.md                   # Guía específica para Linux
-├── instrucciones_actualizacion.md  # Instrucciones para actualizar ejecutables
-├── QR.spec                    # Archivo de configuración PyInstaller (Windows)
-├── GeneradorQR-WiFi.spec      # Archivo de configuración PyInstaller (actual)
-├── build/                     # Archivos temporales de compilación (ignorados)
-├── dist/                      # Ejecutables generados (ignorados)
-├── pruebas_qr/                # Imágenes de prueba generadas (ignoradas)
-├── __pycache__/               # Archivos de caché Python (ignorados)
-├── release assets/            # Archivos temporales para releases (ignorados)
-└── .git/                      # Control de versiones
+├── 📁 docs/                    # 📚 Documentación estructurada
+│   ├── 📁 how-to/             # 🛠️ Guías prácticas
+│   ├── 📁 reference/          # 📖 Referencia técnica
+│   └── 📁 explanation/        # 💡 Explicación conceptual
+├── 📁 icons/                  # Íconos de la aplicación
+├── 🔧 QR.py                   # Script principal con GUI
+├── 🔧 build_exe.py            # Automatización de compilación
+├── 🧪 test_qr.py              # Suite de pruebas
+├── 📋 requirements.txt        # Dependencias Python
+├── 📋 .gitignore             # Configuración Git
+└── 📖 README.md              # Este archivo (router principal)
 ```
 
-### Descripción de Archivos Clave
-- `icons/icono.ico`: Recurso visual para el ícono de la aplicación y ejecutables
-- `.gitignore`: Define qué archivos/carpetas no deben versionarse en Git
-- `*.spec`: Archivos de configuración para PyInstaller, definen parámetros de compilación
-- `build/`: Directorio temporal usado durante la compilación (no versionado)
-- `dist/`: Contiene los ejecutables finales generados (no versionado)
-- `pruebas_qr/`: Almacena códigos QR generados durante las pruebas (no versionado)
-- `__pycache__/`: Archivos de bytecode Python generados automáticamente (no versionado)
-- `release assets/`: Carpeta temporal para preparar archivos de releases (no versionada)
+## 🎯 Uso Básico
 
-## Descripción de Scripts Principales
+1. **Ejecuta** la aplicación (desde código o ejecutable)
+2. **Ingresa** el nombre de la red (SSID)
+3. **Selecciona** el tipo de seguridad
+4. **Ingresa** la contraseña (si aplica)
+5. **Marca** si la red está oculta (opcional)
+6. **Genera** el código QR
+7. **Guarda** la imagen automáticamente
 
-### QR.py
-**Función**: Script principal que contiene toda la lógica de la aplicación.
+## 🔧 Desarrollo
 
-**Características principales**:
-- Interfaz gráfica basada en Tkinter
-- Funciones de validación y escape de caracteres especiales
-- Generación de códigos QR con superposición de texto
-- Manejo de errores y excepciones
-- Soporte para diferentes tipos de seguridad Wi-Fi
+### Configuración del Entorno
+```bash
+# Clonar repositorio
+git clone https://github.com/Reyes-1718/Generador-de-QR-Wifi.git
+cd "Generador de QR Wifi"
 
-**Funciones clave**:
-- `generar_qr_wifi()`: Genera y guarda el código QR
-- `interfaz_grafica()`: Crea la GUI completa
-- `actualizar_campos()`: Gestiona la visibilidad de campos según el tipo de red
+# Crear entorno virtual (opcional)
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+# o
+venv\Scripts\activate     # Windows
 
-### build_exe.py
-**Función**: Automatiza la creación de ejecutables independientes usando PyInstaller.
+# Instalar dependencias
+pip install -r requirements.txt
+```
 
-**Características**:
-- Verifica e instala PyInstaller si es necesario
-- Configura parámetros de compilación (ícono, nombre, opciones)
-- Genera ejecutables sin consola para distribución
-- Proporciona feedback detallado del proceso
+### Ejecutar Pruebas
+```bash
+python test_qr.py
+```
 
-**Uso típico**:
+### Compilar Ejecutable
 ```bash
 python build_exe.py
 ```
 
-### test_qr.py
-**Función**: Suite de pruebas unitarias para validar la funcionalidad del generador.
+## 📦 Releases y Distribución
 
-**Características**:
-- Pruebas de generación de QR con diferentes SSID
-- Validación de texto en imágenes generadas
-- Pruebas de casos edge (nombres largos, caracteres especiales)
-- Integración con unittest framework
+Los ejecutables pre-compilados están disponibles en [**GitHub Releases**](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases):
 
-**Ejecución**:
-```bash
-python test_qr.py
-```
+- ✅ **Windows**: `GeneradorQR-WiFi.exe`
+- 🔄 **Linux/macOS**: Compilación desde fuente (ver [guía de despliegue](docs/how-to/building-and-deployment.md))
 
-## Configuración de Git (.gitignore)
+## 🤝 Contribución
 
-### Propósito del .gitignore
-El archivo `.gitignore` es crucial en proyectos de desarrollo para especificar qué archivos y carpetas deben ser **ignorados** por el sistema de control de versiones Git. Esto mantiene el repositorio limpio, enfocado en el código fuente y evita versionar archivos temporales, compilados o generados automáticamente.
+¡Las contribuciones son bienvenidas! Consulta nuestras guías:
 
-### Configuración Actual
-El proyecto incluye un `.gitignore` completo optimizado para Python y PyInstaller:
+1. Revisa la [arquitectura](docs/explanation/architecture.md) para entender el diseño
+2. Lee la [referencia API](docs/reference/api-reference.md) para desarrollo
+3. Sigue la [guía de construcción](docs/how-to/building-and-deployment.md) para setup
 
-```gitignore
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+### Proceso
+1. Fork el repositorio
+2. Crea una rama feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Implementa cambios con pruebas
+4. Envía Pull Request
 
-# C extensions
-*.so
+## 📄 Licencia
 
-# Distribution / packaging
-.Python
-build/
-release assets/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+Este proyecto está bajo **licencia MIT**. Consulta el archivo LICENSE para detalles completos.
 
-# PyInstaller
-*.manifest
-*.spec
+## 🆘 Soporte
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Archivos generados por el proyecto
-pruebas_qr/
-qr_wifi_*.png
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-```
-
-### Explicación de las Reglas Principales
-
-#### 🐍 **Archivos Python**
-- `__pycache__/`: Carpetas de bytecode generadas por Python
-- `*.py[cod]`: Archivos compilados (.pyc, .pyo)
-
-#### 📦 **Distribución y Compilación**
-- `build/`: Archivos temporales de PyInstaller
-- `dist/`: **Ejecutables finales** (evita versionar binarios grandes)
-- `*.spec`: Configuraciones de PyInstaller
-
-#### 🧪 **Pruebas y Desarrollo**
-- `pruebas_qr/`: **Imágenes de QR generadas en pruebas**
-- `qr_wifi_*.png`: **Códigos QR individuales**
-- Archivos de cobertura y caché de pruebas
-
-#### 🌍 **Entornos Virtuales**
-- `.env`, `.venv`, `venv/`: Variables de entorno y entornos virtuales
-
-#### 🖥️ **IDE y Sistema Operativo**
-- `.vscode/`, `.idea/`: Configuraciones de editores
-- `.DS_Store`, `Thumbs.db`: Archivos del sistema
-
-### Beneficios de Esta Configuración
-- **Repositorio limpio**: Solo código fuente versionado
-- **Colaboración eficiente**: Evita conflictos con archivos generados
-- **Seguridad**: No expone variables de entorno o datos sensibles
-- **Rendimiento**: Reduce tamaño del repositorio y velocidad de clonado
-
-## Instrucciones de Instalación y Ejecución
-
-### Instalación en Windows
-
-#### Opción 1: Ejecutable Pre-compilado (Recomendado)
-1. Ve a la sección **"Releases"** del repositorio en GitHub:  
-   [`https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases`](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases)
-2. Descarga la versión más reciente de `GeneradorQR-WiFi.exe`
-3. Haz doble clic para ejecutar (no requiere instalación adicional)
-
-**Nota**: Los ejecutables están disponibles para Windows. Para otras plataformas, compila desde código fuente.
-
-#### Opción 2: Desde Código Fuente
-```powershell
-# Verificar Python
-py --version
-
-# Instalar dependencias
-py -m pip install -r requirements.txt
-
-# Verificar instalación
-py -c "import qrcode; from PIL import Image; print('Listo')"
-```
-
-### Instalación en Linux
-
-#### Desde Código Fuente
-```bash
-# Verificar Python y Tkinter
-python3 --version
-python3 -c "import tkinter; print('Tkinter OK')"
-
-# Instalar dependencias
-python3 -m pip install -r requirements.txt
-```
-
-#### Ejecutable para Linux
-```bash
-# Instalar PyInstaller
-python3 -m pip install pyinstaller
-
-# Generar ejecutable
-python3 -m PyInstaller --onefile --noconsole --name GeneradorQR-WiFi QR.py
-
-# Hacer ejecutable
-chmod +x dist/GeneradorQR-WiFi
-```
-
-### Ejecución del Programa
-
-#### Windows
-```powershell
-# Desde código fuente
-py QR.py
-
-# Desde ejecutable
-.\dist\GeneradorQR-WiFi.exe
-```
-
-#### Linux
-```bash
-# Desde código fuente
-python3 QR.py
-
-# Desde ejecutable
-./dist/GeneradorQR-WiFi
-```
-
-### Interfaz de Usuario
-La aplicación presenta una interfaz gráfica con:
-1. Campo para el nombre de la red (SSID)
-2. Selector de tipo de seguridad (WPA/WPA2, WEP, Ninguna)
-3. Campo de contraseña (oculto automáticamente para redes abiertas)
-4. Checkbox para redes ocultas
-5. Botones para generar QR y limpiar campos
-
-## Proceso de Compilación y Empaquetado
-
-### Uso de PyInstaller
-El proyecto utiliza PyInstaller para crear ejecutables independientes que no requieren Python instalado en el sistema destino.
-
-### Archivos .spec
-Los archivos `.spec` contienen la configuración de PyInstaller:
-- `QR.spec`: Configuración básica
-- `GeneradorQR-WiFi.spec`: Configuración actualizada con ícono
-
-**Nota**: Los archivos `.spec` son ignorados por `.gitignore` ya que se generan automáticamente, pero se incluyen versiones específicas para referencia.
-
-**Contenido típico de un .spec**:
-```python
-a = Analysis(
-    ['QR.py'],
-    pathex=[],
-    binaries=[],
-    datas=[],
-    hiddenimports=[],
-    hookspath=[],
-    hooksconfig={},
-    runtime_hooks=[],
-    excludes=[],
-    noarchive=False,
-)
-
-pyz = PYZ(a.pure)
-
-exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,
-    a.datas,
-    [],
-    name='GeneradorQR-WiFi',
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=False,  # Sin ventana de consola
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    icon='icons/icono.ico',  # Ícono incluido
-)
-```
-
-### Comando de Compilación Manual
-```bash
-pyinstaller --onefile --noconsole --icon=icons/icono.ico --name GeneradorQR-WiFi QR.py
-```
-
-### Parámetros Importantes
-- `--onefile`: Genera un único archivo ejecutable
-- `--noconsole`: Oculta la ventana de terminal
-- `--icon`: Especifica el archivo de ícono
-- `--name`: Nombre del ejecutable resultante
-
-### Actualización de Ejecutables
-Para generar nuevas versiones:
-1. Ejecutar `python build_exe.py`
-2. Verificar el ejecutable en `dist/`
-3. Probar con SSID largos para validar funcionalidad
-
-## Guía de Pruebas
-
-### Propósito de las Pruebas
-El archivo `test_qr.py` contiene pruebas unitarias que validan:
-- Generación correcta de códigos QR
-- Manejo de SSID largos y caracteres especiales
-- Superposición correcta de texto en imágenes
-- Funcionalidad de escape de caracteres
-
-### Ejecución de Pruebas
-```bash
-# Ejecutar todas las pruebas
-python test_qr.py
-
-# Con salida detallada
-python -m unittest test_qr.py -v
-```
-
-### Carpeta pruebas_qr/
-Durante la ejecución de pruebas, se generan códigos QR de ejemplo en `pruebas_qr/`:
-- `qr_wifi_RedCorta.png`
-- `qr_wifi_RedMuyMuyLargaConMuchosCaracteres.png`
-- Archivos con caracteres especiales y espacios
-
-**Nota**: Esta carpeta está configurada para ser ignorada por Git (`.gitignore`) ya que contiene archivos generados dinámicamente durante las pruebas.
-
-### Casos de Prueba Incluidos
-- SSID cortos y largos
-- Nombres con caracteres especiales
-- Nombres con espacios
-- Validación de texto en imágenes generadas
-
-## Notas Adicionales y Futuras Mejoras
-
-### Características Técnicas
-- **Formato QR**: Estándar WiFi QR oficial
-- **Corrección de Errores**: Nivel L (7%)
-- **Tamaño QR**: Auto-ajustable
-- **Formato Imagen**: PNG con texto superpuesto
-- **Compatibilidad**: Android 10+, iOS 11+
-
-### Limitaciones Actuales
-- Interfaz disponible solo en español
-- Requiere permisos de escritura para guardar imágenes
-- Dependiente de fuentes del sistema para texto
-
-### Mejoras Futuradas
-- Soporte multiidioma
-- Exportación a formatos adicionales (PDF, SVG)
-- Integración con gestores de Wi-Fi del sistema
-- Modo batch para múltiples redes
-- API REST para integración web
-- Temas oscuros/claros para la interfaz
-
-### Descargas y Releases
-Los ejecutables pre-compilados están disponibles en la sección **Releases** de GitHub:
-- [`https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases`](https://github.com/Reyes-1718/Generador-de-QR-Wifi/releases)
-
-**Contenido de cada release:**
-- `GeneradorQR-WiFi.exe`: Ejecutable para Windows
-- `README.md`: Documentación completa
-- `requirements.txt`: Dependencias para desarrollo
-- `LINUX.md`: Guía específica para Linux
-- `instrucciones_actualizacion.md`: Guía de compilación
-
-### Contribución
-Para contribuir:
-1. Fork del repositorio
-2. Crear rama feature
-3. Implementar cambios con pruebas
-4. Enviar pull request
-
-### Licencia
-Este proyecto está bajo licencia MIT. Consulta el archivo LICENSE para detalles.
-
-### Soporte
-Para issues, preguntas o sugerencias:
-- Abrir issue en el repositorio
-- Revisar documentación en `LINUX.md` para problemas específicos de Linux
-- Verificar `instrucciones_actualizacion.md` para compilación
+- 📋 [**Issues**](https://github.com/Reyes-1718/Generador-de-QR-Wifi/issues) - Reporta bugs o solicita features
+- 📚 **Documentación** - Explora `/docs` para guías detalladas
+- 🧪 **Pruebas** - Ejecuta `python test_qr.py` para validar funcionalidad
 
 ---
 
-**¡Simplifica la conexión Wi-Fi con códigos QR! 📱🔗**
+**¡Simplifica la conexión Wi-Fi con códigos QR!** 📱🔗
+
+*Para documentación técnica detallada, explora la carpeta [`docs/`](docs/) que contiene guías especializadas siguiendo las mejores prácticas de Diátaxis.*
